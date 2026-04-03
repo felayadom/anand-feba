@@ -382,6 +382,36 @@
         grid-template-columns: 1fr;
       }
     }
+    @media (max-width: 980px) {
+  .gallery-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .thumbs {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .thumb {
+    min-width: 220px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .gallery-main {
+    min-height: 380px;
+  }
+
+  .controls {
+    justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+}
   </style>
 </head>
 <body>
