@@ -3,250 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Story</title>
+  <title>Anand & Feba</title>
   <style>
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      background: #f7f3ee;
-      color: #2f2a26;
+      color: #2c3950;
+      background:
+        radial-gradient(circle at top left, rgba(213,228,247,0.72), transparent 30%),
+        radial-gradient(circle at top right, rgba(188,211,240,0.55), transparent 28%),
+        linear-gradient(180deg, #f4f8fc 0%, #eaf2fb 100%);
     }
-    .container {
-      width: min(1100px, calc(100% - 32px));
-      margin: 0 auto;
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .glass {
+      background: rgba(255,255,255,0.74);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(70,95,132,0.10);
+      box-shadow: 0 24px 70px rgba(41,64,94,0.08);
     }
-    header {
-      padding: 32px 0 24px;
+    header { padding: 26px 0 38px; }
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap; margin-bottom: 44px;
     }
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .brand {
-      font-size: 0.95rem;
-      color: #6e625a;
-    }
-    .nav a {
-      color: #6e625a;
-      text-decoration: none;
-      margin-left: 18px;
-      font-size: 0.95rem;
-    }
-    .hero {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 28px;
-      align-items: center;
-      padding-bottom: 32px;
-    }
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: #fff;
-      border: 1px solid #e7ddd3;
-      color: #7a6f66;
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    h1 {
-      font-size: clamp(2.6rem, 7vw, 5.6rem);
-      line-height: 0.98;
-      margin: 0;
-      font-weight: 500;
-    }
-    .hero p,
-    .section-head p,
-    .story-card p,
-    .panel p,
-    .thumb small {
-      line-height: 1.8;
-      color: #60564e;
-    }
-    .hero-image,
-    .gallery-main,
-    .story-card,
-    .panel,
-    .quote-box,
-    .thumb {
-      background: white;
-      border: 1px solid #ece2d8;
-      border-radius: 28px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-    }
-    .hero-image,
-    .gallery-main {
-      overflow: hidden;
-      position: relative;
-      min-height: 520px;
-    }
-    .hero-image img,
-    .gallery-main img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.52), rgba(0,0,0,0.05));
-    }
-    .caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      color: white;
-      padding: 24px;
-    }
-    section { padding: 26px 0; }
-    .section-head { max-width: 780px; margin-bottom: 22px; }
-    .section-head h2 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1.06;
-      font-weight: 500;
-    }
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-    .story-card { padding: 20px; }
-    .story-card h3 { margin: 0 0 8px; font-size: 1.08rem; }
-    .icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: #f7efe7;
-      display: grid;
-      place-items: center;
-      margin-bottom: 12px;
+    .brand { display: flex; gap: 12px; align-items: center; color: #4f6786; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 999px; display: grid; place-items: center;
+      background: rgba(255,255,255,0.84); border: 1px solid rgba(70,95,132,0.10);
       font-size: 1.1rem;
     }
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
+    .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .nav-links a { color: #4f6786; font-size: 0.96rem; }
+    .hero { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 34px; align-items: center; }
+    .eyebrow {
+      display: inline-block; padding: 9px 14px; border-radius: 999px; margin-bottom: 18px;
+      background: rgba(255,255,255,0.84); color: #5d7695;
+      border: 1px solid rgba(70,95,132,0.10); font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
     }
-    .panel { padding: 26px; }
-    .mini-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
+    h1 { font-size: clamp(3rem, 7vw, 5.6rem); line-height: 0.95; margin: 0; font-weight: 500; }
+    .hero p, .section-head p, .story-card p, .mini p, .feature-panel p, .thumb-note {
+      line-height: 1.9; color: #50657f;
     }
-    .mini {
-      background: #faf6f1;
-      border: 1px solid #eee4d8;
-      border-radius: 20px;
-      padding: 16px;
+    .hero-text p { max-width: 700px; font-size: 1.06rem; margin-top: 20px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .tag {
+      padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(70,95,132,0.10); color: #4f6786; font-size: 0.92rem;
     }
+    .hero-card, .story-card, .editorial-card, .gallery-main, .thumb, .quote-box, .feature-panel { border-radius: 30px; }
+    .hero-card, .gallery-main { position: relative; overflow: hidden; min-height: 620px; }
+    .hero-card img, .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+    .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,43,68,0.58), rgba(28,43,68,0.08)); }
+    .caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px; color: white; }
+    section { padding: 34px 0; }
+    .section-head { margin-bottom: 22px; max-width: 760px; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.05; font-weight: 500; margin: 0; }
+    .story-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .story-card { padding: 22px; }
+    .story-card:hover, .thumb:hover, .control:hover, .quote-btn:hover { transform: translateY(-2px); }
+    .story-card, .thumb, .control, .quote-btn { transition: 0.22s ease; }
+    .story-icon {
+      width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center;
+      background: #e9f1fb; margin-bottom: 14px; font-size: 1.05rem;
+    }
+    .story-card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+    .editorial-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+    .editorial-card { padding: 28px; }
+    .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .mini { border-radius: 20px; padding: 16px; background: #f4f8fd; border: 1px solid #dce8f6; }
     .mini.wide { grid-column: 1 / -1; }
-    .mini-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #847970;
-      margin-bottom: 8px;
-    }
-    .gallery-layout {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 18px;
-    }
-    .thumbs {
-      display: grid;
-      gap: 12px;
-    }
-    .thumb {
-      padding: 14px;
-      cursor: pointer;
-      text-align: left;
-    }
-    .thumb.active {
-      background: #2f2a26;
-      color: white;
-    }
-    .thumb.active small { color: rgba(255,255,255,0.8); }
+    .mini-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: #6b84a2; margin-bottom: 8px; }
+    .gallery-layout { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 18px; }
+    .thumbs { display: grid; gap: 12px; }
+    .thumb { padding: 15px; text-align: left; cursor: pointer; }
+    .thumb.active { background: #425f84; color: white; border-color: #425f84; }
+    .thumb.active .thumb-note { color: rgba(255,255,255,0.8); }
     .thumb-title { font-weight: 600; margin-bottom: 4px; }
-    .controls { margin-top: 14px; display: flex; gap: 10px; }
-    button {
-      font: inherit;
-      border: 1px solid #e5d9cc;
-      background: white;
-      color: #4e453e;
-      border-radius: 999px;
-      padding: 10px 16px;
-      cursor: pointer;
+    .thumb-note { font-size: 0.9rem; }
+    .controls { display: flex; gap: 10px; margin-top: 14px; }
+    .control, .quote-btn {
+      border: 1px solid rgba(70,95,132,0.10); background: rgba(255,255,255,0.86);
+      color: #46607e; border-radius: 999px; padding: 10px 16px; font: inherit; cursor: pointer;
     }
-    .quotes-layout {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 18px;
-      align-items: start;
-    }
-    .quote-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-    .quote-btn.active {
-      background: #2f2a26;
-      color: white;
-      border-color: #2f2a26;
-    }
-    .quote-box {
-      padding: 30px;
-      min-height: 220px;
-      display: flex;
-      align-items: center;
-    }
-    .quote-text {
-      font-size: clamp(1.5rem, 2.7vw, 2.3rem);
-      line-height: 1.45;
-      font-style: italic;
-    }
-    .dark-panel {
-      background: #2f2a26;
-      color: white;
-      margin-top: 16px;
-    }
-    .dark-panel p, .dark-panel li { color: rgba(255,255,255,0.8); }
-    footer {
-      text-align: center;
-      padding: 42px 0 56px;
-      color: #756a61;
-    }
+    .quotes-layout { display: grid; grid-template-columns: 0.84fr 1.16fr; gap: 18px; align-items: start; }
+    .quote-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .quote-btn.active { background: #425f84; color: white; border-color: #425f84; }
+    .quote-box { padding: 34px; min-height: 250px; display: flex; align-items: center; }
+    .quote-text { font-size: clamp(1.55rem, 2.6vw, 2.4rem); line-height: 1.45; font-style: italic; }
+    .feature-panel { margin-top: 18px; padding: 34px; background: #425f84; color: white; }
+    .feature-panel p, .feature-panel li { color: rgba(255,255,255,0.85); }
+    .feature-panel ul { margin: 16px 0 0; padding-left: 20px; line-height: 1.9; }
+    footer { text-align: center; color: #68809d; padding: 42px 0 56px; }
     @media (max-width: 980px) {
-      .hero,
-      .story-grid,
-      .two-col,
-      .gallery-layout,
-      .quotes-layout { grid-template-columns: 1fr; }
-      .hero-image,
-      .gallery-main { min-height: 420px; }
+      .hero, .story-grid, .editorial-layout, .gallery-layout, .quotes-layout { grid-template-columns: 1fr; }
+      .hero-card, .gallery-main { min-height: 460px; }
     }
-    @media (max-width: 700px) {
-      .mini-grid { grid-template-columns: 1fr; }
-      .nav a { margin-left: 0; margin-right: 16px; }
-    }
+    @media (max-width: 700px) { .mini-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <header class="container">
-    <div class="topbar">
-      <div class="brand">♡ A Love Archive</div>
-      <div class="nav">
+    <div class="nav">
+      <div class="brand">
+        <div class="brand-mark">♡</div>
+        <div>
+          <div style="font-size:0.76rem;letter-spacing:0.15em;text-transform:uppercase;">Our Love Archive</div>
+          <div>Anand & Feba</div>
+        </div>
+      </div>
+      <div class="nav-links">
         <a href="#story">Story</a>
         <a href="#moments">Moments</a>
         <a href="#gallery">Gallery</a>
@@ -255,22 +124,25 @@
     </div>
 
     <div class="hero">
-      <div>
-        <div class="eyebrow">Timeless • interactive • personal</div>
-        <h1>A website that feels like your favorite memory.</h1>
+      <div class="hero-text">
+        <div class="eyebrow">Anand • Feba</div>
+        <h1>Our story could never be explained with a few words, but here's a start.</h1>
         <p>
-          A softer, more personal way to hold your story: Hinge, the North Pole joke,
-          the aquarium first date, chandelier lore, beach days in Gary, city views,
-          and all the little moments that became something lasting.
+          A modern love story that changed each of us. Our very first (very long) date became FaceTimes that never end and pining that never stops.
         </p>
+        <div class="tag-row">
+          <div class="tag">Softness</div>
+          <div class="tag">Laughter</div>
+          <div class="tag">Distance</div>
+          <div class="tag">Choosing us</div>
+        </div>
       </div>
-
-      <div class="hero-image">
-        <img src="./src/assets/images/bridge.jpeg" alt="City view together" />
+      <div class="hero-card glass">
+        <img src="./src/assets/images/ice-skating.jpeg" alt="City view together" />
         <div class="overlay"></div>
         <div class="caption">
           <div style="font-size:1.2rem;font-weight:600;">City Views With You</div>
-          <div style="margin-top:6px;opacity:0.92;">You made falling in love in Chicago feel even easier.</div>
+          <div style="margin-top:6px;opacity:0.9;">You made falling in love in Chicago feel even easier.</div>
         </div>
       </div>
     </div>
@@ -279,69 +151,34 @@
   <main class="container">
     <section id="story">
       <div class="section-head">
-        <div class="eyebrow">The Story</div>
-        <h2>A polished timeline with the details that feel like you.</h2>
-        <p>Each chapter gets to feel intentional, warm, and beautifully framed.</p>
+        <div class="eyebrow">The Details</div>
+        <h2>The chapters in our love book.</h2>
       </div>
-
       <div class="story-grid">
-        <div class="story-card">
-          <div class="icon">♡</div>
-          <h3>We met on Hinge</h3>
-          <p>What started as one match became something that just felt right. Your personalities clicked, and the future started feeling more shared.</p>
-        </div>
-        <div class="story-card">
-          <div class="icon">❄</div>
-          <h3>The North Pole joke</h3>
-          <p>Before you even met, there was already something funny and easy about the two of you.</p>
-        </div>
-        <div class="story-card">
-          <div class="icon">✦</div>
-          <h3>The aquarium first date</h3>
-          <p>The first real chapter. Calm, exciting, and memorable in the way only a really good first date can be.</p>
-        </div>
-        <div class="story-card">
-          <div class="icon">✧</div>
-          <h3>The chandelier lore</h3>
-          <p>Inside jokes that only make sense to the two of you are sometimes the best part of a love story.</p>
-        </div>
-        <div class="story-card">
-          <div class="icon">⌁</div>
-          <h3>Gary, Indiana</h3>
-          <p>A simple trip that turned into one of your favorite memories: beach air, laughter, and a sunset that stayed with you.</p>
-        </div>
+        <div class="story-card glass"><div class="story-icon">♡</div><h3>We met on Hinge</h3><p>What started as one match became something that just felt right. Our personalities clicked in ways unimaginable and our futures started to look awfully similar.</p></div>
+        <div class="story-card glass"><div class="story-icon">❄</div><h3>North Pole</h3><p>We planned our first date to be in the cold continent, but our friend holds a grudge and one of us got coal that year.</p></div>
+        <div class="story-card glass"><div class="story-icon">✦</div><h3>The (Actual) First Date</h3><p>Every minute of this first date became inescapable. Each moment pulled us closer together until all the problems seem to disappear.</p></div>
+        <div class="story-card glass"><div class="story-icon">✧</div><h3>The Lore</h3><p>Inside jokes that only make sense to the two of us. From chandeliers that need to be hung to Elmo learning new words our humors matched incomparably.</p></div>
+        <div class="story-card glass"><div class="story-icon">⌁</div><h3>Gary, Indiana</h3><p>Our first trip and probably one that will stay unmatched. Peaceful moments, new friends, connecting with nature, and the best memories.</p></div>
       </div>
     </section>
 
     <section id="moments">
-      <div class="two-col">
+      <div class="editorial-layout">
         <div>
           <div class="section-head">
             <div class="eyebrow">Our Story</div>
-            <h2>A more personal way to hold your favorite memories.</h2>
-            <p>
-              Inspired by the feel of your anniversary keepsake, but written sincerely.
-              Timeless, thoughtful, and personal.
-            </p>
+            <h2>If only the feelings that we experience when we're together were ones that we always felt.</h2>
+            <p>But then they wouldn't be as special as they are now.</p>
           </div>
         </div>
-
-        <div class="panel">
-          <div style="font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;color:#847970;">A few favorite pieces of us</div>
-          <h3 style="font-size:2rem;font-weight:500;margin:10px 0 0;line-height:1.14;">The moments that made this love feel like home.</h3>
+        <div class="editorial-card glass">
+          <div style="font-size:0.76rem;letter-spacing:0.15em;text-transform:uppercase;color:#6b84a2;">The little things that became us</div>
+          <h3 style="font-size:2rem;font-weight:500;margin:10px 0 0;line-height:1.14;">The ways we kept choosing each other.</h3>
           <div class="mini-grid">
-            <div class="mini">
-              <div class="mini-label">How it started</div>
-              <p>It began with Hinge, an easy sense of humor, and the kind of conversation that made everything feel natural from the start.</p>
-            </div>
-            <div class="mini">
-              <div class="mini-label">The first real chapter</div>
-              <p>The aquarium date felt like the beginning of something special — quiet, exciting, and easy to remember.</p>
-            </div>
-            <div class="mini wide">
-              <div class="mini-label">What stayed with us</div>
-              <p>Since then, it has been city views, fun dates, nights in, nights out, inside jokes, beach sunsets, and all the little moments that somehow became something lasting.</p>
-            </div>
+            <div class="mini"><div class="mini-label">Supporting what we love</div><p>We support the things that make each other feel alive: painting kits, golf outings, photography explanations, and all the interests that become sweeter when shared.</p></div>
+            <div class="mini"><div class="mini-label">What love carried through</div><p>We struggled through challenges that tested our relationship, but love (and a lot of tears) kept bringing us back to each other.</p></div>
+            <div class="mini wide"><div class="mini-label">How we stayed close</div><p>Never-ending FaceTimes, always making time for each other, and choosing one another again and again is how this love kept growing.</p></div>
           </div>
         </div>
       </div>
@@ -349,27 +186,23 @@
 
     <section id="gallery">
       <div class="section-head">
-        <div class="eyebrow">The Gallery</div>
-        <h2>Interactive, but still elegant.</h2>
-        <p>Click through the memories to switch the featured image and caption.</p>
+        <div class="eyebrow">Our moments</div>
       </div>
-
       <div class="gallery-layout">
         <div>
-          <div class="gallery-main">
+          <div class="gallery-main glass">
             <img id="mainPhoto" src="./src/assets/images/zoo-bench.png" alt="Main memory" />
             <div class="overlay"></div>
             <div class="caption">
-              <div id="mainTitle" style="font-size:1.3rem;font-weight:600;">Origins of Our Story</div>
-              <div id="mainNote" style="margin-top:8px;max-width:640px;line-height:1.8;opacity:0.92;">It always leads back to the beginning — Hinge, the aquarium, and something that felt easy from the start.</div>
+              <div id="mainTitle" style="font-size:1.3rem;font-weight:600;">Our fun</div>
+              <div id="mainNote" style="margin-top:8px;max-width:640px;line-height:1.8;opacity:0.92;">Best person to visit animals with.</div>
             </div>
           </div>
           <div class="controls">
-            <button id="prevBtn">← Previous</button>
-            <button id="nextBtn">Next →</button>
+            <button class="control" id="prevBtn">← Previous</button>
+            <button class="control" id="nextBtn">Next →</button>
           </div>
         </div>
-
         <div class="thumbs" id="thumbs"></div>
       </div>
     </section>
@@ -380,143 +213,101 @@
           <div class="section-head">
             <div class="eyebrow">The Words</div>
             <h2>Little lines that hold a lot.</h2>
-            <p>This can later become a place for favorite texts, card messages, or lines that sound exactly like the two of you.</p>
+            <p>Actions speak louder than words but words can hold a lot of weight.</p>
           </div>
           <div class="quote-buttons" id="quoteButtons"></div>
         </div>
-
-        <div class="quote-box">
+        <div class="quote-box glass">
           <div class="quote-text" id="quoteText">“Somehow the ordinary things always become my favorite memories when they happen with you.”</div>
         </div>
       </div>
 
-      <div class="panel dark-panel">
-        <div style="font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.64);">What makes this special</div>
-        <h3 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:500;line-height:1.1;margin:12px 0 0;">Classy first. Personal always.</h3>
-        <p style="margin-top:16px;">The site stays romantic without feeling cheesy. It uses your actual memories and inside jokes, but packages them in a softer, more timeless visual style.</p>
-        <ul style="line-height:1.9; margin-top:12px;">
-          <li>A soft neutral palette with warmth</li>
-          <li>Interactive photo switching and quote reveals</li>
-          <li>A structure you can keep adding to over time</li>
-          <li>Inspired by your keepsake without sounding like a newspaper</li>
+      <div class="feature-panel">
+        <div style="font-size:0.76rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.68);">For everything this love became</div>
+        <h3 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:500;line-height:1.1;margin:12px 0 0;">Some loves arrive quietly and still change everything.</h3>
+        <p style="margin-top:16px;">This space holds the laughter, the distance, the softness, the ache of missing each other, and the warmth of knowing there is someone worth choosing through all of it.</p>
+        <ul>
+          <li>The kind of story that kept growing through distance, time, and effort</li>
+          <li>Little moments that became part of something lasting</li>
+          <li>A space to keep adding memories as your story keeps unfolding</li>
+          <li>A reminder that the best parts were never only the big moments</li>
         </ul>
       </div>
     </section>
   </main>
 
-  <footer class="container">Made with love, and a very good memory for inside jokes.</footer>
+  <footer class="container">Made with love.</footer>
 
   <script>
     const photos = [
-      {
-        src: "./src/assets/images/zoo-bench.png",
-        title: "Origins of Our Story",
-        note: "It always leads back to the beginning — Hinge, the aquarium, and something that felt easy from the start."
-      },
-      {
-        src: "./src/assets/images/beach-gary.png",
-        title: "First Trip to Gary",
-        note: "Beach air, laughter, and a day that somehow became unforgettable."
-      },
-      {
-        src: "./src/assets/images/beach-sunset.png",
-        title: "That Sunset",
-        note: "One of those moments that felt quiet but stayed with us."
-      },
-      {
-        src: "./src/assets/images/bridge.jpeg",
-        title: "City Views With You",
-        note: "You made falling in love in Chicago feel even easier."
-      },
-      {
-        src: "./src/assets/images/ice-skating.jpeg",
-        title: "A Really Fun Date",
-        note: "Light, playful, and one of those nights that just felt good."
-      },
-      {
-        src: "./src/assets/images/clandestino.jpeg",
-        title: "Nights Out",
-        note: "Getting dressed up is fun — but being together is the best part."
-      },
-      {
-        src: "./src/assets/images/green-wall.jpeg",
-        title: "Nights In & Out",
-        note: "Both feel special, just in different ways — and both are better with you."
-      },
-      {
-        src: "./src/assets/images/mirror-selfie.jpeg",
-        title: "A Favorite Little Memory",
-        note: "One of those moments that feels simple but means a lot."
-      }
+      { src: "./src/assets/images/zoo-bench.png", title: "Our fun", note: "Best person to visit animals with." },
+      { src: "./src/assets/images/beach-gary.png", title: "First Trip to Gary", note: "Beach air, laughter, and a day that somehow became unforgettable." },
+      { src: "./src/assets/images/beach-sunset.png", title: "That Sunset", note: "One of those moments that felt quiet but stayed with us." },
+      { src: "./src/assets/images/bridge.jpeg", title: "City Views With You", note: "Falling in love with Chicago and with each other." },
+      { src: "./src/assets/images/ice-skating.jpeg", title: "Our Ice Skating Date", note: "The best light, playful activity that will always stay a core memory." },
+      { src: "./src/assets/images/clandestino.jpeg", title: "Nights Out", note: "Getting dressed up is fun, but being together is the best part." },
+      { src: "./src/assets/images/green-wall.jpeg", title: "Well Suited", note: "A match in every way." },
+      { src: "./src/assets/images/mirror-selfie.jpeg", title: "Mirror Mirror", note: "One of those moments that feels simple in the best way." }
     ];
-
     const quotes = [
-      "Somehow the ordinary things always become my favorite memories when they happen with you.",
-      "Every chapter with you has felt softer, sweeter, and better than I imagined.",
-      "Nights out sparkle, nights in feel safe, and both are better because they are ours."
+      "I love your smile, the way you think, the way your mind works, your heart. I love you.",
+      "Fly safe",
+      "You are the most precious thing in my life."
     ];
-
     let currentPhoto = 0;
     let currentQuote = 0;
-
-    const mainPhoto = document.getElementById('mainPhoto');
-    const mainTitle = document.getElementById('mainTitle');
-    const mainNote = document.getElementById('mainNote');
-    const thumbs = document.getElementById('thumbs');
-    const quoteText = document.getElementById('quoteText');
-    const quoteButtons = document.getElementById('quoteButtons');
+    const mainPhoto = document.getElementById("mainPhoto");
+    const mainTitle = document.getElementById("mainTitle");
+    const mainNote = document.getElementById("mainNote");
+    const thumbs = document.getElementById("thumbs");
+    const quoteText = document.getElementById("quoteText");
+    const quoteButtons = document.getElementById("quoteButtons");
 
     function renderPhoto() {
       const photo = photos[currentPhoto];
       mainPhoto.src = photo.src;
       mainTitle.textContent = photo.title;
       mainNote.textContent = photo.note;
-      const thumbNodes = document.querySelectorAll('.thumb');
-      thumbNodes.forEach((thumb, index) => {
-        if (index === currentPhoto) {
-          thumb.classList.add('active');
-        } else {
-          thumb.classList.remove('active');
-        }
+      const thumbNodes = document.querySelectorAll(".thumb");
+      thumbNodes.forEach(function (thumb, index) {
+        thumb.classList.toggle("active", index === currentPhoto);
       });
     }
 
     function renderThumbs() {
-      thumbs.innerHTML = '';
-      for (let i = 0; i < photos.length; i++) {
-        const photo = photos[i];
-        const button = document.createElement('button');
-        button.className = 'thumb' + (i === currentPhoto ? ' active' : '');
-        button.innerHTML = '<div class="thumb-title">' + photo.title + '</div><small>' + photo.note + '</small>';
-        button.addEventListener('click', function () {
-          currentPhoto = i;
+      thumbs.innerHTML = "";
+      photos.forEach(function (photo, index) {
+        const button = document.createElement("button");
+        button.className = "thumb glass" + (index === currentPhoto ? " active" : "");
+        button.innerHTML = '<div class="thumb-title">' + photo.title + '</div><div class="thumb-note">' + photo.note + '</div>';
+        button.addEventListener("click", function () {
+          currentPhoto = index;
           renderPhoto();
         });
         thumbs.appendChild(button);
-      }
+      });
     }
 
     function renderQuotes() {
-      quoteButtons.innerHTML = '';
-      for (let i = 0; i < quotes.length; i++) {
-        const button = document.createElement('button');
-        button.className = 'quote-btn' + (i === currentQuote ? ' active' : '');
-        button.textContent = 'Line ' + (i + 1);
-        button.addEventListener('click', function () {
-          currentQuote = i;
-          quoteText.textContent = '“' + quotes[i] + '”';
+      quoteButtons.innerHTML = "";
+      quotes.forEach(function (quote, index) {
+        const button = document.createElement("button");
+        button.className = "quote-btn" + (index === currentQuote ? " active" : "");
+        button.textContent = "Line " + (index + 1);
+        button.addEventListener("click", function () {
+          currentQuote = index;
+          quoteText.textContent = "“" + quote + "”";
           renderQuotes();
         });
         quoteButtons.appendChild(button);
-      }
+      });
     }
 
-    document.getElementById('prevBtn').addEventListener('click', function () {
+    document.getElementById("prevBtn").addEventListener("click", function () {
       currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;
       renderPhoto();
     });
-
-    document.getElementById('nextBtn').addEventListener('click', function () {
+    document.getElementById("nextBtn").addEventListener("click", function () {
       currentPhoto = (currentPhoto + 1) % photos.length;
       renderPhoto();
     });
