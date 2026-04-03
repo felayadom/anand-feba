@@ -1,1 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, #f8f4ee 0%, #f4efe8 100%);
+      color: #2f2a26;
+    }
+    .glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .glow::before,
+    .glow::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.35;
+    }
+    .glow::before {
+      background: #f3d8d5;
+      top: 40px;
+      left: -120px;
+    }
+    .glow::after {
+      background: #ead9b8;
+      right: -120px;
+      top: 220px;
+    }
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    header {
+      padding: 28px 0 54px;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(80,60,40,0.12);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #5c524a;
+      font-size: 0.95rem;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(80,60,40,0.12);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #74675d;
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      font-weight: 500;
+    }
+    .hero p {
+      margin-top: 22px;
+      font-size: 1.08rem;
+      line-height: 1.9;
+      color: #5c524a;
+      max-width: 700px;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .tag {
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(80,60,40,0.12);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: #5b5148;
+    }
+    .hero-card,
+    .card,
+    .story-card,
+    .editorial-card,
+    .quote-box,
+    .feature-panel,
+    .thumb {
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(80,60,40,0.10);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.08);
+      backdrop-filter: blur(8px);
+    }
+    .hero-card {
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-card img,
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .hero-card .overlay,
+    .gallery-main .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.05));
+    }
+    .hero-card .caption,
+    .gallery-main .caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      color: white;
+      padding: 24px;
+    }
+    section {
+      padding: 34px 0;
+    }
+    .section-head {
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1.06;
+      margin: 0;
+    }
+    .section-head p {
+      color: #5c524a;
+      line-height: 1.9;
+      font-size: 1.02rem;
+      margin-top: 14px;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .story-card {
+      border-radius: 26px;
+      padding: 22px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .story-card:hover,
+    .thumb:hover,
+    .quote-button:hover,
+    .gallery-button:hover {
+      transform: translateY(-3px);
+    }
+    .story-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #f6efe8;
+      margin-bottom: 14px;
+      font-size: 1.1rem;
+    }
+    .story-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
+      font-weight: 600;
+    }
+    .story-card p {
+      margin: 0;
+      line-height: 1.8;
+      color: #5c524a;
+      font-size: 0.96rem;
+    }
+    .editorial {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .editorial-card {
+      border-radius: 30px;
+      padding: 28px;
+    }
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .mini {
+      background: #f9f5ef;
+      border-radius: 22px;
+      padding: 18px;
+      border: 1px solid rgba(80,60,40,0.07);
+    }
+    .mini.wide { grid-column: 1 / -1; }
+    .mini-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #82756c;
+      margin-bottom: 8px;
+    }
+    .mini p {
+      margin: 0;
+      line-height: 1.8;
+      color: #5c524a;
+    }
+    .gallery-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .gallery-main {
+      position: relative;
+      min-height: 640px;
+      border-radius: 34px;
+      overflow: hidden;
+    }
+    .gallery-side {
+      display: grid;
+      gap: 12px;
+    }
+    .thumb {
+      border-radius: 24px;
+      padding: 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+    .thumb.active {
+      background: #2f2a26;
+      color: #fff;
+    }
+    .thumb-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .thumb-note {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: inherit;
+      opacity: 0.82;
+    }
+    .gallery-controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .gallery-button,
+    .quote-button {
+      border: 1px solid rgba(80,60,40,0.12);
+      background: rgba(255,255,255,0.8);
+      color: #453c35;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font: inherit;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+    .quotes-layout {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .quote-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .quote-button.active {
+      background: #2f2a26;
+      color: white;
+    }
+    .quote-box {
+      border-radius: 30px;
+      padding: 34px;
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+    }
+    .quote-text {
+      font-size: clamp(1.5rem, 2.5vw, 2.4rem);
+      line-height: 1.45;
+      color: #2f2a26;
+      font-style: italic;
+    }
+    .feature-panel {
+      border-radius: 34px;
+      padding: 34px;
+      background: #2f2a26;
+      color: white;
+      margin-top: 18px;
+    }
+    .feature-panel p,
+    .feature-panel li { color: rgba(255,255,255,0.78); }
+    .feature-panel ul {
+      margin: 18px 0 0;
+      padding-left: 20px;
+      line-height: 1.9;
+    }
+    footer {
+      padding: 40px 0 60px;
+      color: #6f645c;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 980px) {
+      .hero,
+      .editorial,
+      .gallery-layout,
+      .quotes-layout,
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-main { min-height: 520px; }
+    }
+    @media (max-width: 720px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 14px; }
+      .editorial-grid { grid-template-columns: 1fr; }
+      .gallery-main { min-height: 420px; }
+      .quote-box { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
 
+  <header class="container">
+    <div class="nav">
+      <div class="brand">
+        <div class="brand-mark">♡</div>
+        <div>
+          <div style="font-size: 0.76rem; letter-spacing: 0.18em; text-transform: uppercase; color: #7a6f66;">A Love Archive</div>
+          <div>For the two of you</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#story">Story</a>
+        <a href="#moments">Moments</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#words">Words</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Timeless • interactive • personal</div>
+        <h1>A website that feels like your favorite memory.</h1>
+        <p>
+          This is a softer, more personal way to hold your story: Hinge, the North Pole joke,
+          the aquarium first date, the chandelier lore, beach days in Gary, city views,
+          and all the little moments that became part of something lasting.
+        </p>
+        <div class="tag-row">
+          <div class="tag">Elegant</div>
+          <div class="tag">Interactive</div>
+          <div class="tag">Romantic</div>
+          <div class="tag">Keepsake energy</div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="src/assets/images/bridge.jpeg" alt="City view photo" />
+        <div class="overlay"></div>
+        <div class="caption">
+          <div style="font-size: 1.2rem; font-weight: 600;">City Views With You</div>
+          <div style="margin-top: 6px; opacity: 0.9; line-height: 1.7;">You made falling in love in Chicago feel even easier.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="story">
+      <div class="section-head">
+        <div class="eyebrow">The Story</div>
+        <h2>A polished timeline with the details that feel like you.</h2>
+        <p>
+          The site can unfold like chapters instead of reading like a scrapbook. Each moment gets to feel intentional,
+          warm, and beautifully framed.
+        </p>
+      </div>
+
+      <div class="story-grid">
+        <div class="story-card">
+          <div class="story-icon">♡</div>
+          <h3>We met on Hinge</h3>
+          <p>What started as one match became something that just felt right. Your personalities clicked, and the future started feeling a little more shared.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">❄</div>
+          <h3>The North Pole joke</h3>
+          <p>Before you even met, there was already something funny and easy about you two. A ridiculous joke that somehow still belongs in the story.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">✦</div>
+          <h3>The aquarium first date</h3>
+          <p>The first real chapter. Calm, exciting, and memorable in the way only a really good first date can be.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">✧</div>
+          <h3>The chandelier lore</h3>
+          <p>Inside jokes that only make sense to the two of you are sometimes the most important part of a love story.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">⌁</div>
+          <h3>Gary, Indiana</h3>
+          <p>A simple trip that turned into one of your favorite memories: beach air, laughter, and a sunset that stayed with you.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="moments">
+      <div class="editorial">
+        <div>
+          <div class="section-head">
+            <div class="eyebrow">Our Story</div>
+            <h2>A more personal way to hold your favorite memories.</h2>
+            <p>
+              This section is inspired by the layout feel of your anniversary keepsake, but the writing stays sincere.
+              It is meant to feel timeless, thoughtful, and personal.
+            </p>
+          </div>
+        </div>
+
+        <div class="editorial-card">
+          <div style="font-size: 0.76rem; letter-spacing: 0.18em; text-transform: uppercase; color: #82756c;">A few favorite pieces of us</div>
+          <h3 style="font-size: 2rem; font-weight: 500; margin: 10px 0 0; line-height: 1.15;">The moments that made this love feel like home.</h3>
+
+          <div class="editorial-grid">
+            <div class="mini">
+              <div class="mini-label">How it started</div>
+              <p>It began with Hinge, an easy sense of humor, and the kind of conversation that made everything feel natural from the start.</p>
+            </div>
+            <div class="mini">
+              <div class="mini-label">The first real chapter</div>
+              <p>The aquarium date felt like the beginning of something special — quiet, exciting, and easy to remember.</p>
+            </div>
+            <div class="mini wide">
+              <div class="mini-label">What stayed with us</div>
+              <p>Since then, it has been city views, fun dates, nights in, nights out, inside jokes, beach sunsets, and all the little moments that somehow became part of something lasting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-head">
+        <div class="eyebrow">The Gallery</div>
+        <h2>Interactive, but still elegant.</h2>
+        <p>Click through the memories to switch the featured image and caption.</p>
+      </div>
+
+      <div class="gallery-layout">
+        <div>
+          <div class="gallery-main card">
+            <img id="mainPhoto" src="src/assets/images/zoo-bench.png" alt="Main memory" />
+            <div class="overlay"></div>
+            <div class="caption">
+              <div id="mainTitle" style="font-size: 1.3rem; font-weight: 600;">Origins of Our Story</div>
+              <div id="mainNote" style="margin-top: 8px; max-width: 640px; line-height: 1.8; opacity: 0.92;">It always leads back to the beginning — Hinge, the aquarium, and something that felt easy from the start.</div>
+            </div>
+          </div>
+
+          <div class="gallery-controls">
+            <button class="gallery-button" id="prevBtn">← Previous</button>
+            <button class="gallery-button" id="nextBtn">Next →</button>
+          </div>
+        </div>
+
+        <div class="gallery-side" id="thumbs"></div>
+      </div>
+    </section>
+
+    <section id="words">
+      <div class="quotes-layout">
+        <div>
+          <div class="section-head">
+            <div class="eyebrow">The Words</div>
+            <h2>Little lines that hold a lot.</h2>
+            <p>
+              This can later become a place for favorite texts, card messages, or lines that sound exactly like the two of you.
+            </p>
+          </div>
+
+          <div class="quote-buttons" id="quoteButtons"></div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-text" id="quoteText">“Somehow the ordinary things always become my favorite memories when they happen with you.”</div>
+        </div>
+      </div>
+
+      <div class="feature-panel">
+        <div style="font-size: 0.76rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6);">What makes this special</div>
+        <h3 style="font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 500; line-height: 1.1; margin: 12px 0 0;">Classy first. Personal always.</h3>
+        <p style="line-height: 1.9; max-width: 760px; margin-top: 18px;">
+          The site stays romantic without feeling cheesy. It uses your actual memories and inside jokes,
+          but packages them in a softer, more timeless visual style.
+        </p>
+        <ul>
+          <li>A soft neutral palette with warmth and glow</li>
+          <li>Interactive photo switching and quote reveals</li>
+          <li>A structure you can keep adding to over time</li>
+          <li>Inspired by your keepsake, without sounding like a newspaper</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    Made with love, and a very good memory for inside jokes.
+  </footer>
+
+  <script>
+    const photos = [
+      {
+        src: "src/assets/images/zoo-bench.png",
+        title: "Origins of Our Story",
+        note: "It always leads back to the beginning — Hinge, the aquarium, and something that felt easy from the start."
+      },
+      {
+        src: "src/assets/images/beach-gary.png",
+        title: "First Trip to Gary",
+        note: "Beach air, laughter, and a day that somehow became unforgettable."
+      },
+      {
+        src: "src/assets/images/beach-sunset.png",
+        title: "That Sunset",
+        note: "One of those moments that felt quiet but stayed with us."
+      },
+      {
+        src: "src/assets/images/bridge.jpeg",
+        title: "City Views With You",
+        note: "You made falling in love in Chicago feel even easier."
+      },
+      {
+        src: "src/assets/images/ice-skating.jpeg",
+        title: "A Really Fun Date",
+        note: "Light, playful, and one of those nights that just felt good."
+      },
+      {
+        src: "src/assets/images/clandestino.jpeg",
+        title: "Nights Out",
+        note: "Getting dressed up is fun — but being together is the best part."
+      },
+      {
+        src: "src/assets/images/green-wall.jpeg",
+        title: "Nights In & Out",
+        note: "Both feel special, just in different ways — and both are better with you."
+      },
+      {
+        src: "src/assets/images/mirror-selfie.jpeg",
+        title: "A Favorite Little Memory",
+        note: "One of those moments that feels simple but means a lot."
+      }
+    ];
+
+    const quotes = [
+      "Somehow the ordinary things always become my favorite memories when they happen with you.",
+      "Every chapter with you has felt softer, sweeter, and better than I imagined.",
+      "Nights out sparkle, nights in feel safe, and both are better because they are ours."
+    ];
+
+    let currentPhoto = 0;
+    let currentQuote = 0;
+
+    const mainPhoto = document.getElementById("mainPhoto");
+    const mainTitle = document.getElementById("mainTitle");
+    const mainNote = document.getElementById("mainNote");
+    const thumbs = document.getElementById("thumbs");
+    const quoteText = document.getElementById("quoteText");
+    const quoteButtons = document.getElementById("quoteButtons");
+
+    function renderPhoto() {
+      const photo = photos[currentPhoto];
+      mainPhoto.src = photo.src;
+      mainTitle.textContent = photo.title;
+      mainNote.textContent = photo.note;
+
+      document.querySelectorAll('.thumb').forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentPhoto);
+      });
+    }
+
+    function renderThumbs() {
+      thumbs.innerHTML = "";
+      photos.forEach((photo, index) => {
+        const button = document.createElement("button");
+        button.className = "thumb" + (index === currentPhoto ? " active" : "");
+        button.innerHTML = `
+          <div class="thumb-title">${photo.title}</div>
+          <div class="thumb-note">${photo.note}</div>
+        `;
+        button.addEventListener("click", () => {
+          currentPhoto = index;
+          renderPhoto();
+        });
+        thumbs.appendChild(button);
+      });
+    }
+
+    function renderQuotes() {
+      quoteButtons.innerHTML = "";
+      quotes.forEach((quote, index) => {
+        const button = document.createElement("button");
+        button.className = "quote-button" + (index === currentQuote ? " active" : "");
+        button.textContent = `Line ${index + 1}`;
+        button.addEventListener("click", () => {
+          currentQuote = index;
+          quoteText.textContent = `“${quote}”`;
+          renderQuotes();
+        });
+        quoteButtons.appendChild(button);
+      });
+    }
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;
+      renderPhoto();
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      currentPhoto = (currentPhoto + 1) % photos.length;
+      renderPhoto();
+    });
+
+    renderThumbs();
+    renderPhoto();
+    renderQuotes();
+  </script>
+</body>
+</html>
